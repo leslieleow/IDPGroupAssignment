@@ -1,0 +1,45 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    
+    <CheckBoxPreference
+	    android:key="on_off"
+	    android:title="@string/pref_title_on_off"
+	    android:defaultValue="true" />
+    
+    <ListPreference
+        android:defaultValue="0"
+        android:dependency="on_off"
+        android:entries="@array/pref_example_massage_list"
+        android:entryValues="@array/pref_example_list2_values"
+        android:key="example_list2"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_massage_duration" />
+    
+    <com.example.masterbedalarm.SeekBarPreference
+	   android:title="Intensity"
+	   android:dependency="on_off"
+	   android:key="seekBar2" 
+	   android:defaultValue="20" />   
+	 
+   <!-- 
+    <ListPreference
+        android:dependency="on_off"
+        android:title="@string/pref_title_massage_type" 
+    	android:defaultValue="0"
+        android:entries="@array/pref_example_massage_type_list"
+        android:entryValues="@array/pref_example_list3_values"
+        android:key="example_list3"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+    -->     
+    <PreferenceScreen        
+    	android:title="@string/pref_title_massage_type" 
+        android:dependency="on_off" >
+        <intent 
+            android:targetClass="com.example.masterbedalarm.TypeActivity"
+            android:targetPackage="com.example.masterbedalarm" 
+        />
+        
+    </PreferenceScreen>
+</PreferenceScreen>

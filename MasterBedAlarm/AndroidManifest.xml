@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.masterbedalarm"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+    
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.masterbedalarm.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.masterbedalarm.WelcomePageActivity"
+            android:label="@string/title_activity_welcome_page"
+            android:parentActivityName="com.example.masterbedalarm.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.masterbedalarm.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.masterbedalarm.FirstPageActivity"
+            android:label="@string/title_activity_first_page"
+            android:parentActivityName="com.example.masterbedalarm" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.masterbedalarm" />
+        </activity>
+        <activity
+            android:name="com.example.masterbedalarm.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="com.example.masterbedalarm" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.masterbedalarm" />
+        </activity>
+        <activity
+            android:name="com.example.masterbedalarm.TypeActivity"
+            android:label="@string/title_activity_type"
+            android:parentActivityName="com.example.masterbedalarm" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.masterbedalarm" />
+        </activity>
+        <activity
+            android:name="com.example.masterbedalarm.ApplicationListActivity"
+            android:label="@string/title_activity_application_list"
+            android:parentActivityName="com.example.masterbedalarm" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.masterbedalarm" />
+        </activity>
+        <activity
+            android:name="com.example.masterbedalarm.GoodMorningActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.masterbedalarm.PlayService"
+            android:label="@string/title_activity_play_service"
+            android:parentActivityName="com.example.masterbedalarm" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.masterbedalarm" />
+        </activity>
+       
+        <activity
+            android:name="com.example.masterbedalarm.MassageActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.example.masterbedalarm.PlayService"
+            android:enabled="true" />
+
+        <activity
+            android:name="com.example.masterbedalarm.AdhocMassageActivity"
+            android:label="@string/title_activity_adhoc_massage"
+            android:parentActivityName="com.example.masterbedalarm" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.masterbedalarm" />
+        </activity>
+        <activity
+            android:name="com.example.masterbedalarm.AlarmListActivity"
+            android:label="@string/title_activity_alarm_list"
+            android:parentActivityName="com.example.masterbedalarm" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.masterbedalarm" />
+        </activity>
+        <activity
+            android:name="com.example.masterbedalarm.AlarmNotificationActivity"
+            android:label="@string/title_activity_alarm_notification"
+            android:parentActivityName="com.example.masterbedalarm" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.masterbedalarm" />
+        </activity>
+        <activity
+            android:name="com.example.masterbedalarm.AlarmCountdownActivity"
+            android:label="@string/title_activity_alarm_countdown"
+            android:parentActivityName="com.example.masterbedalarm" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.masterbedalarm" />
+        </activity>
+        <activity
+            android:name="com.example.masterbedalarm.AntiSnoozeActivity"
+            android:label="@string/title_activity_anti_snooze"
+            android:parentActivityName="com.example.masterbedalarm" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.masterbedalarm" />
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MasterBed Alarm</string>
+    <string name="action_settings">Settings</string>
+    <string name="edit_message">Enter your name!</string>
+    <string name="button_send">Let\&apos;s go!</string>
+    <string name="title_activity_welcome_page">WelcomePageActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_first_page">FirstPageActivity</string>
+    <string name="option">Option</string>
+    <string name="new_game">hihi</string>
+    <string name="help">help</string>
+
+    <string-array name="pref_sync_frequency_titles"></string-array>
+    <string-array name="pref_sync_frequency_values"></string-array>
+    <!--
+    <string name="pref_title_sync_frequency">pref_title_sync_frequency</string>
+    <string name="pref_title_system_sync_settings">pref_title_system_sync_settings</string>
+    <string name="pref_description_social_recommendations">pref_description_social_recommendations</string>
+    <string name="pref_title_social_recommendations">pref_title_social_recommendations</string>
+    <string name="pref_default_display_name">pref_default_display_name</string>
+    <string name="pref_title_display_name">pref_title_display_name</string>
+    -->
+    <string-array name="pref_example_list_titles"></string-array>
+    <string-array name="pref_example_list_values"></string-array>
+    <!--
+    <string name="pref_title_add_friends_to_messages">pref_title_add_friends_to_messages</string>
+    <string name="pref_header_general">pref_header_general</string>
+   	<string name="pref_header_notifications">pref_header_notifications</string>
+    <string name="pref_header_data_sync">pref_header_data_sync</string>
+    <string name="pref_title_new_message_notifications">pref_title_new_message_notifications</string>
+    <string name="pref_title_ringtone">pref_title_ringtone</string>
+    <string name="pref_title_vibrate">pref_title_vibrate</string>
+    <string name="title_activity_settings">title_activity_settings</string>
+    -->
+    <string name="home">home</string>
+    <string name="massage">massage</string>
+    <string name="settings">settings</string>
+    <string name="exit">exit</string>
+    <string name="title_activity_type">TypeActivity</string>
+    <string name="title_activity_application_list">ApplicationListActivity</string>
+    <string name="title_activity_play_service">PlayService</string>
+    <string name="title_activity_massage">MassageActivity</string>
+    <string name="title_activity_adhoc_massage">AdhocMassageActivity</string>
+    <string name="title_activity_alarm_list">AlarmListActivity</string>
+    <string name="title_activity_alarm_notification">AlarmNotificationActivity</string>
+    <string name="title_activity_alarm_countdown">AlarmCountdownActivity</string>
+    <string name="title_activity_anti_snooze">AntiSnoozeActivity</string>
+
+</resources>
