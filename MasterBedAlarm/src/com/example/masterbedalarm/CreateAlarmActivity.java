@@ -1,55 +1,95 @@
 package com.example.masterbedalarm;
 
-import android.os.Bundle;
+import java.util.Calendar;
+
 import android.app.Activity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.os.Build;
+import android.app.AlarmManager;
+import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.preference.Preference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TimePicker;
 
 public class CreateAlarmActivity extends Activity {
 
+	//private Button msetButton;
+	private Calendar calendar;
+	private TimePicker timepicker;
+	private Activity mActivity;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);		
 		setContentView(R.layout.activity_create_alarm);
-		// Show the Up button in the action bar.
-		setupActionBar();
+		mActivity = this;
+		
+		calendar = Calendar.getInstance();
+    	calendar.setTimeInMillis(System.currentTimeMillis());
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);                              
+        
+        new TimePickerDialog(CreateAlarmActivity.this, new TimePickerDialog.OnTimeSetListener() {
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                calendar.setTimeInMillis(System.currentTimeMillis());
+                //set(f, value) changes field f to value.
+                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                calendar.set(Calendar.MINUTE, minute);
+                calendar.set(Calendar.SECOND, 0);
+                calendar.set(Calendar.MILLISECOND, 0);
+                  
+                Intent resultIntent = new Intent("action_add_alarm");
+                resultIntent.putExtra("add_alarm", hourOfDay + ":" + minute);
+                resultIntent.putExtra("alarmTime", calendar.getTimeInMillis());
+                mActivity.setResult(RESULT_OK, resultIntent);
+                finish();
+            }
+        },hour,minute,true).show();
+		
 	}
-
-	/**
-	 * Set up the {@link android.app.ActionBar}, if the API is available.
-	 */
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void setupActionBar() {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.create_alarm, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			// This ID represents the Home or Up button. In the case of this
-			// activity, the Up button is shown. Use NavUtils to allow users
-			// to navigate up one level in the application structure. For
-			// more details, see the Navigation pattern on Android Design:
-			//
-			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
-			//
-			NavUtils.navigateUpFromSameTask(this);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
+	/*@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		//timepicker = (TimePicker)this.findViewById(R.id.timePicker1);
+		calendar = Calendar.getInstance();
+				
+		msetButton = (Button)this.findViewById(R.id.button1);
+		msetButton.setOnClickListener(new OnClickListener() {            
+            @Override
+            public void onClick(View v) {               
+            	calendar.setTimeInMillis(System.currentTimeMillis());
+                int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                int minute = calendar.get(Calendar.MINUTE);                              
+                
+                new TimePickerDialog(CreateAlarmActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        calendar.setTimeInMillis(System.currentTimeMillis());
+                        //set(f, value) changes field f to value.
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        calendar.set(Calendar.MINUTE, minute);
+                        calendar.set(Calendar.SECOND, 0);
+                        calendar.set(Calendar.MILLISECOND, 0);
+                          
+                        Intent resultIntent = new Intent("action_add_alarm");
+                        resultIntent.putExtra("add_alarm", hourOfDay + ":" + minute);
+                        resultIntent.putExtra("alarmTime", calendar.getTimeInMillis());
+                        mActivity.setResult(RESULT_OK, resultIntent);
+                        finish();
+                    }
+                },hour,minute,true).show();
+            }
+        });
+		
+	}*/
+	
+	
+	
+	
 }

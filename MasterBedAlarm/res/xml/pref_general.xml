@@ -1,11 +1,23 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <com.example.masterbedalarm.TimePreference 
+  <!--   <com.example.masterbedalarm.TimePreference 
          android:key="alarm_time" 
          android:title="@string/pref_title_alarm_time"
     />
-    
+   -->  
 
+
+ <PreferenceScreen
+     android:id="@+id/alarm_time"
+     android:key="alarm_time2"
+     android:title="@string/pref_title_alarm_time">   
+     <intent
+        android:targetClass="com.example.masterbedalarm.CreateAlarmActivity"
+        android:targetPackage="com.example.masterbedalarm" >
+     </intent>
+ </PreferenceScreen>
+
+ 
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
     <EditTextPreference

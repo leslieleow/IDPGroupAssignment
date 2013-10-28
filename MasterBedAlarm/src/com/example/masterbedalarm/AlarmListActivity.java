@@ -1,26 +1,18 @@
 package com.example.masterbedalarm;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.content.Intent;
-import android.os.Build;
-import java.util.Calendar;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 //import com.htc.widget.HtcCheckBox;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.content.Context;
@@ -46,6 +38,8 @@ public class AlarmListActivity extends Activity {
 	private AlarmClockAdapter mAlarmClockAdapter;
 	private Activity mActivity;
 	private long mAlarmTime;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -63,37 +57,6 @@ public class AlarmListActivity extends Activity {
 		updateList();
 	}
 
-
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.navigation_menu, menu);
-	    return true;
-	}
-
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
-	        case R.id.settings:
-	            openSettings();
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
-	}
-	
-	public void openSettings() {
-	    Intent intent = new Intent(this, SettingsActivity.class);
-	    startActivity(intent);		
-	}
-	
-	public void set(View view) {
-	    Intent intent = new Intent(this, AlarmCountdownActivity.class);
-	    startActivity(intent);			
-	}
 
 	
 	private void initList() {
@@ -121,7 +84,7 @@ public class AlarmListActivity extends Activity {
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		
 		if(item.getItemId() == R.id.action_add_alarm) {
-	    	Intent intent = new Intent(this, CreateAlarm.class);
+	    	Intent intent = new Intent(this, SettingsActivity.class);
 	    	startActivityForResult(intent, LAUNCH_SET_ALARM);
 		}
 		return super.onMenuItemSelected(featureId, item);
@@ -139,7 +102,6 @@ public class AlarmListActivity extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		Log.d("Ray", "onActivityResult");
 		if(data.getAction().equals("action_add_alarm") && resultCode == RESULT_OK) {
-			
 			Log.d("Ray", "onActivityResult");
 			AlarmItem item = new AlarmItem();
 			item.time_stamp = data.getStringExtra("add_alarm");
@@ -196,7 +158,8 @@ public class AlarmListActivity extends Activity {
             return position;
         }
 
-        @Override
+        @SuppressLint("NewApi")
+		@Override
         public View getView(int position, View convertView, ViewGroup parent) {
         	Log.d("Ray", "getView");
             if (convertView != null) {
@@ -227,15 +190,56 @@ public class AlarmListActivity extends Activity {
             return mLayout;
         }
     }
+    
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.navigation_menu, menu);
+	    inflater.inflate(R.menu.alarm_list, menu);
+	    return true;
+	}
+
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.settings:
+	            openSettings();
+	            return true;
+	        case R.id.massage:
+	        	openMassage();
+	        	return true;
+	        case R.id.home:
+	        	openGoodMorning();
+	        	return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	public void openSettings() {
+	    Intent intent = new Intent(this, SettingsActivity.class);
+	    startActivity(intent);		
+	}
+	
+	public void openMassage(){
+		Intent intent = new Intent(this, MassageActivity.class);
+		startActivity(intent);
+	}
+	
+	public void openGoodMorning(){
+		Intent intent = new Intent(this, GoodMorningActivity.class);
+		startActivity(intent);
+	}
+	
+	public void set(View view) {
+	    Intent intent = new Intent(this, AlarmCountdownActivity.class);
+	    startActivity(intent);			
+	}
+	
 
 
 }
 
-
-
-
-
-
-
-
-
+	

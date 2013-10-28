@@ -1,7 +1,9 @@
 package com.example.masterbedalarm;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -16,11 +18,20 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.SeekBar;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+
+import com.example.masterbedalarm.AlarmListActivity.AlarmClockAdapter;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -41,11 +52,19 @@ public class SettingsActivity extends PreferenceActivity {
 	 * shown on tablets.
 	 */
 	private static final boolean ALWAYS_SIMPLE_PREFS = false;
-
+	private final static int LAUNCH_SET_ALARM = 0;
+	private Calendar calendar;
+	private String time;
+	private String alarmTime;
+	
+	private ArrayList<AlarmItem> mAlarmList;
+	private Activity mActivity;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setupActionBar();
+		mActivity = this;
 	}
 
 	/**
@@ -199,7 +218,7 @@ public class SettingsActivity extends PreferenceActivity {
 
 			//} else if (preference instanceof ){
 			
-			
+
 			
 			
 			} 
@@ -276,4 +295,40 @@ public class SettingsActivity extends PreferenceActivity {
 
 		}
 	}	
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.navigation_menu, menu);
+	    inflater.inflate(R.menu.settings, menu);
+	    return true;
+	}
+	
+	
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		Log.d("Ray", "onActivityResult");
+		if(data.getAction().equals("action_add_alarm") && resultCode == RESULT_OK) {
+			//Toast toast = Toast.makeText(getApplicationContext(), "gello", Toast.LENGTH_LONG);
+			//toast.show();
+			time = data.getStringExtra("add_alarm");
+			alarmTime = data.getStringExtra("alarmTime");
+		}
+	}
+	
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+		
+		if(item.getItemId() == R.id.save) {
+	    	Intent resultIntent = new Intent("action_add_alarm");
+            resultIntent.putExtra("add_alarm", time);
+            resultIntent.putExtra("alarmTime", alarmTime);
+            mActivity.setResult(RESULT_OK, resultIntent);
+	    	finish();
+		}
+		return super.onMenuItemSelected(featureId, item);
+	}
 }

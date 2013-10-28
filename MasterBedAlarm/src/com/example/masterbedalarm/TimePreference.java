@@ -1,6 +1,10 @@
 package com.example.masterbedalarm;
 
+import java.util.Calendar;
+
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.preference.DialogPreference;
 import android.preference.Preference;
@@ -12,8 +16,7 @@ public class TimePreference extends DialogPreference {
     private int lastHour=0;
     private int lastMinute=0;
     private TimePicker picker=null;
-    
-    
+
     public static int getHour(String time) {
         String[] pieces=time.split(":");
 
@@ -36,7 +39,7 @@ public class TimePreference extends DialogPreference {
     @Override
     protected View onCreateDialogView() {
         picker=new TimePicker(getContext());
-
+        
         return(picker);
     }
 
