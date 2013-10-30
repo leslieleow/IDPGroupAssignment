@@ -84,7 +84,7 @@ public class AlarmListActivity extends Activity {
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		
 		if(item.getItemId() == R.id.action_add_alarm) {
-	    	Intent intent = new Intent(this, SettingsActivity.class);
+	    	Intent intent = new Intent(this, CreateAlarmActivity.class);
 	    	startActivityForResult(intent, LAUNCH_SET_ALARM);
 		}
 		return super.onMenuItemSelected(featureId, item);

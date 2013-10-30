@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="47dp"
         android:checked="true" />
 
     <ImageButton
@@ -18,8 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/switch1"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="64dp"
-        android:onClick="ToMassage"
-        android:src="@drawable/ic_stat_notification" />
+        android:layout_marginBottom="73dp"
+        android:src="@drawable/bell"     
+        android:background="@null" />
 
 </RelativeLayout>

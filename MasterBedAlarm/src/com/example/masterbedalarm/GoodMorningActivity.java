@@ -53,6 +53,10 @@ public class GoodMorningActivity extends Activity {
                 
         	    final ListView lv = (ListView)popupView.findViewById(R.id.applicationList);
         	    lv.setAdapter(aa);
+        	    lv.setClickable(true);
+        	    lv.setEnabled(true);
+        	    lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        	    lv.setSelector(android.R.drawable.screen_background_light_transparent);
         	            	    
         	    lv.setOnItemClickListener(new ListView.OnItemClickListener() {
         	    	

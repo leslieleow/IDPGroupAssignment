@@ -60,7 +60,7 @@ public class SettingsActivity extends PreferenceActivity {
 	private ArrayList<AlarmItem> mAlarmList;
 	private Activity mActivity;
 	private Intent resultIntent;
-	private boolean isSet = false;
+	//private boolean isSet = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,21 +68,22 @@ public class SettingsActivity extends PreferenceActivity {
 		setupActionBar();
 		mActivity = this;
 	}
-	
+/*	
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 
-		Toast toast = Toast.makeText(getApplicationContext(), "gello", Toast.LENGTH_LONG);
-		toast.show();
-		if(isSet){
+		//if(isSet){
+			
 	    	resultIntent = new Intent("action_add_alarm");
 	        resultIntent.putExtra("add_alarm", time);
 	        resultIntent.putExtra("alarmTime", alarmTime);
 			Log.d("Ray", "onResume");
-		}
-	}
+
+			
+		//}
+	}*/
 
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
@@ -322,11 +323,15 @@ public class SettingsActivity extends PreferenceActivity {
 	}
 	
 	
-	
+/*	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
+
+		Toast toast = Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_LONG);
+		toast.show();
+		
 		Log.d("Ray", "onActivityResult");
 		if(data.getAction().equals("action_add_alarm") && resultCode == RESULT_OK) {
 			//Toast toast = Toast.makeText(getApplicationContext(), "gello", Toast.LENGTH_LONG);
@@ -334,8 +339,9 @@ public class SettingsActivity extends PreferenceActivity {
 			time = data.getStringExtra("add_alarm");
 			alarmTime = data.getStringExtra("alarmTime");
 			isSet = true;
+
 		}
-	}
+	}*/
 	
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {

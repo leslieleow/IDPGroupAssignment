@@ -54,7 +54,7 @@ public class AlarmNotificationActivity extends Activity {
 //		            //cancel
 //		            am.cancel(pendingIntent);	
 					stopMusic();
-		            Intent nextintent = new Intent(mActivity, AlarmListActivity.class);
+		            Intent nextintent = new Intent(mActivity, GoodMorningActivity.class);
 			    	startActivity(nextintent);                   
                     finish();
 				}

@@ -20,7 +20,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-    	intent.setClass(context, AlarmNotificationActivity.class);
+    	intent.setClass(context, MassageActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(intent);
 		
