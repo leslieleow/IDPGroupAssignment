@@ -59,12 +59,29 @@ public class SettingsActivity extends PreferenceActivity {
 	
 	private ArrayList<AlarmItem> mAlarmList;
 	private Activity mActivity;
+	private Intent resultIntent;
+	private boolean isSet = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setupActionBar();
 		mActivity = this;
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+
+		Toast toast = Toast.makeText(getApplicationContext(), "gello", Toast.LENGTH_LONG);
+		toast.show();
+		if(isSet){
+	    	resultIntent = new Intent("action_add_alarm");
+	        resultIntent.putExtra("add_alarm", time);
+	        resultIntent.putExtra("alarmTime", alarmTime);
+			Log.d("Ray", "onResume");
+		}
 	}
 
 	/**
@@ -316,6 +333,7 @@ public class SettingsActivity extends PreferenceActivity {
 			//toast.show();
 			time = data.getStringExtra("add_alarm");
 			alarmTime = data.getStringExtra("alarmTime");
+			isSet = true;
 		}
 	}
 	
@@ -323,9 +341,6 @@ public class SettingsActivity extends PreferenceActivity {
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		
 		if(item.getItemId() == R.id.save) {
-	    	Intent resultIntent = new Intent("action_add_alarm");
-            resultIntent.putExtra("add_alarm", time);
-            resultIntent.putExtra("alarmTime", alarmTime);
             mActivity.setResult(RESULT_OK, resultIntent);
 	    	finish();
 		}
